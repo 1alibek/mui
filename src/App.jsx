@@ -9,6 +9,7 @@ import FeatureSection from "./components/katalog";
 import ComponentShowcase from "./components/box";
 import Testimonials from "./components/box2";
 import Footer from "./components/footer";
+import Showcase from "./components/showcase";
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -28,6 +29,7 @@ const App = () => {
         toggleDarkMode={() => setDarkMode(!darkMode)}
       />
       <hr className="text-gray-300" />
+      <Showcase/>
       <Social />
       <Production />
       <FeatureSection />
