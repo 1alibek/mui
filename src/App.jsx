@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
 import Header from "./components/header";
 import Navbar from "./components/navbar";
-import Showcase from "./components/showcase";
 import Social from "./components/social";
 import Production from "./components/production";
 import FeatureSection from "./components/katalog";
@@ -10,19 +11,30 @@ import Testimonials from "./components/box2";
 import Footer from "./components/footer";
 
 const App = () => {
+  const [darkMode, setDarkMode] = useState(false);
+
+  const theme = createTheme({
+    palette: {
+      mode: darkMode ? "dark" : "light",
+    },
+  });
+
   return (
-    <div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
       <Header />
-      <Navbar/>
-      <hr className="text-gray-300"/>
-      {/* <Showcase/> */}
-      <Social/>
-      <Production/>
-      <FeatureSection/>
-      <ComponentShowcase/>
-      <Testimonials/>
-      <Footer/>
-    </div>
+      <Navbar
+        darkMode={darkMode}
+        toggleDarkMode={() => setDarkMode(!darkMode)}
+      />
+      <hr className="text-gray-300" />
+      <Social />
+      <Production />
+      <FeatureSection />
+      <ComponentShowcase />
+      <Testimonials />
+      <Footer />
+    </ThemeProvider>
   );
 };
 

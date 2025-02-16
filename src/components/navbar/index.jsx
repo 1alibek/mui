@@ -1,11 +1,11 @@
 import React from "react";
-
-import { Input } from "@mui/material";
+import { Input, IconButton } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import { DarkMode, LightMode, GitHub } from "@mui/icons-material";
 
 import logo from "../../assets/icons/logo.svg";
-import { DarkMode, GitHub, ShieldMoon } from "@mui/icons-material";
-const Navbar = () => {
+
+const Navbar = ({ darkMode, toggleDarkMode }) => {
   return (
     <div className="flex items-center justify-between w-[90%] mx-auto min-[1440px]:w-[1440px] py-3">
       <div className="flex items-center gap-4">
@@ -28,12 +28,19 @@ const Navbar = () => {
             Ctrl+K
           </button>
         </div>
-        <button className="border border-[#d9dee2] rounded-[12px] w-[32px] h-[32px]">
+        <IconButton className="border border-[#d9dee2] rounded-[12px] w-[32px] h-[32px]">
           <GitHub className="text-[#0073E6]" />
-        </button>
-        <button className="border border-[#d9dee2] rounded-[12px] w-[32px] h-[32px]">
-          <DarkMode className="text-[#0073E6]" />
-        </button>
+        </IconButton>
+        <IconButton
+          className="border border-[#d9dee2] rounded-[12px] w-[32px] h-[32px]"
+          onClick={toggleDarkMode}
+        >
+          {darkMode ? (
+            <LightMode className="text-[#0073E6]" />
+          ) : (
+            <DarkMode className="text-[#0073E6]" />
+          )}
+        </IconButton>
       </div>
     </div>
   );
